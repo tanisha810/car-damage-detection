@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 from torchvision import models, transforms
+from torchvision.models import ResNet50_Weights
 from PIL import Image
 
 trained_model = None
@@ -9,7 +10,7 @@ class_names = ['Front Breakage', 'Front Crushed', 'Front Normal', 'Rear Breakage
 class CarClassifierResNet(nn.Module):
     def __init__(self, num_classes=6):
         super().__init__()
-        self.model = models.resnet50(weights='DEFAULT')
+        self.model = models.resnet50(weights=ResNet50_Weights.DEFAULT)
 
         for params in self.model.parameters():
             params.requires_grad = False
