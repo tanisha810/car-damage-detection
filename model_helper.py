@@ -3,7 +3,6 @@ import torch.nn as nn
 from torchvision import models, transforms
 from torchvision.models import ResNet50_Weights
 from PIL import Image
-from PIL import ImageOps
 
 
 trained_model = None
@@ -31,11 +30,9 @@ class CarClassifierResNet(nn.Module):
 
 def predict(image_path):
     image = Image.open(image_path).convert("RGB")
-    image = ImageOps.exif_transpose(image)
 
     transform = transforms.Compose([
-        transforms.Resize(256),
-        transforms.CenterCrop(224),
+        transforms.Resize((224,224)),
         transforms.ToTensor(),
         transforms.Normalize(
             mean=[0.485, 0.456, 0.406],
