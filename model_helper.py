@@ -3,6 +3,8 @@ import torch.nn as nn
 from torchvision import models, transforms
 from torchvision.models import ResNet50_Weights
 from PIL import Image
+from PIL import ImageOps
+
 
 trained_model = None
 class_names = ['Front Breakage', 'Front Crushed', 'Front Normal', 'Rear Breakage', 'Rear Crushed', 'Rear Normal']
